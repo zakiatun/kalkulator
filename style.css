@@ -1,0 +1,673 @@
+:root {
+  /* Palet Warna Utama: Kolaborasi Pink & Biru Modern */
+  --pink-primary: #ec4899;
+  --pink-hover: #db2777;
+  --pink-light: #fbcfe8;
+  --pink-soft: #fdf2f8;
+
+  --blue-primary: #3b82f6;
+  --blue-dark: #1d4ed8;
+  --blue-light: #dbeafe;
+  --blue-soft: #eff6ff;
+
+  /* Gradasi & Efek Modern */
+  --gradient-main: linear-gradient(
+    135deg,
+    #ec4899 0%,
+    #6366f1 50%,
+    #3b82f6 100%
+  );
+  --gradient-bg: radial-gradient(
+    circle at top left,
+    #fce7f3 0%,
+    #e0e7ff 50%,
+    #dbeafe 100%
+  );
+  --gradient-card: linear-gradient(
+    135deg,
+    rgba(253, 242, 248, 0.9) 0%,
+    rgba(239, 246, 255, 0.9) 100%
+  );
+
+  /* Warna Netral & Tipografi */
+  --bg-surface: #ffffff;
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-light: #e2e8f0;
+
+  /* Bayangan (Shadows) */
+  --shadow-phone:
+    0 25px 50px -12px rgba(59, 130, 246, 0.25),
+    0 12px 24px -8px rgba(236, 72, 153, 0.2);
+  --shadow-btn: 0 4px 10px rgba(15, 23, 42, 0.04);
+  --shadow-glow: 0 8px 20px -4px rgba(236, 72, 153, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Plus Jakarta Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--gradient-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 14px;
+  color: var(--text-main);
+}
+
+/* =========================================
+   BINGKAI UTAMA APLIKASI (ALA SMARTPHONE)
+   ========================================= */
+.app-container {
+  width: 100%;
+  max-width: 410px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-radius: 36px;
+  box-shadow: var(--shadow-phone);
+  border: 5px solid #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* =========================================
+   HEADER & NAVIGASI TAB
+   ========================================= */
+.app-header {
+  background: var(--gradient-main);
+  color: #ffffff;
+  padding: 22px 20px 18px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  box-shadow: 0 10px 25px -10px rgba(99, 102, 241, 0.5);
+}
+
+.brand h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.brand p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 3px;
+}
+
+/* Switcher Mode Kalkulator / Belajar */
+.mode-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(15, 23, 42, 0.18);
+  padding: 4px;
+  border-radius: 16px;
+  margin-top: 16px;
+  gap: 4px;
+}
+
+.tab-btn {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: var(--pink-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================
+   KONTEN UTAMA & ANIMASI PERPINDAHAN
+   ========================================= */
+.view-section {
+  padding: 18px 20px 24px;
+  animation: slideFade 0.3s ease-out;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   BAGIAN 1: KALKULATOR PONSEL
+   ========================================= */
+.history-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+.history-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--blue-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.history-label:hover {
+  color: var(--pink-primary);
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--pink-primary);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.btn-text:hover {
+  background: var(--pink-soft);
+}
+
+.history-list {
+  background: var(--blue-soft);
+  border: 1px solid var(--blue-light);
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  max-height: 115px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px dashed #cbd5e1;
+  color: var(--text-secondary);
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item strong {
+  color: var(--blue-dark);
+}
+
+.empty-history {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 6px 0;
+}
+
+/* Layar Tampilan Angka */
+.calc-display {
+  background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1.5px solid var(--border-light);
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  text-align: right;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+  box-shadow: inset 0 2px 6px rgba(15, 23, 42, 0.03);
+  overflow: hidden;
+}
+
+.previous-operand {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  min-height: 22px;
+  letter-spacing: 0.3px;
+}
+
+.current-operand {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 4px;
+  line-height: 1.15;
+  word-break: break-all;
+}
+
+/* Baris Tombol Ilmiah Ringkas */
+.scientific-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.btn-sci {
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  border: 1px solid var(--blue-light);
+  border-radius: 12px;
+  padding: 8px 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-sci:hover {
+  background: var(--blue-primary);
+  color: #ffffff;
+  border-color: var(--blue-primary);
+  transform: translateY(-1px);
+}
+
+.btn-sci:active {
+  transform: scale(0.95);
+}
+
+/* Keypad Angka & Operator */
+.calc-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn-key {
+  height: 56px;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.18rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-key:active {
+  transform: scale(0.93);
+}
+
+.btn-number {
+  background: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+
+.btn-number:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn-action {
+  background: var(--pink-soft);
+  color: var(--pink-primary);
+  font-weight: 700;
+}
+
+.btn-action:hover {
+  background: var(--pink-light);
+}
+
+.btn-operator {
+  background: var(--blue-soft);
+  color: var(--blue-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.btn-operator:hover {
+  background: var(--blue-light);
+}
+
+.btn-equals {
+  background: var(--gradient-main);
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-equals:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   BAGIAN 2: MODUL BELAJAR MATEMATIKA SMK
+   ========================================= */
+#learning-view {
+  max-height: 565px;
+  overflow-y: auto;
+  padding-right: 16px;
+}
+
+/* Custom Scrollbar Pink-Biru */
+#learning-view::-webkit-scrollbar,
+.history-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+#learning-view::-webkit-scrollbar-track,
+.history-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#learning-view::-webkit-scrollbar-thumb,
+.history-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pink-primary), var(--blue-primary));
+  border-radius: 10px;
+}
+
+.topic-selector label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 14px;
+  border: 1.5px solid var(--blue-light);
+  background-color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-select:focus {
+  border-color: var(--pink-primary);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+}
+
+/* Kartu Materi & Rumus */
+.formula-box {
+  background: var(--gradient-card);
+  border: 1.5px solid var(--pink-light);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.formula-box h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pink-primary);
+  margin-bottom: 5px;
+}
+
+.topic-desc {
+  font-size: 0.81rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.formula-highlight {
+  background: #ffffff;
+  border-left: 4px solid var(--blue-primary);
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+}
+
+/* Area Simulasi & Solver */
+.interactive-solver h3,
+.quiz-box h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.input-group input,
+.quiz-answer-row input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-light);
+  font-size: 0.88rem;
+  color: var(--text-main);
+  background: #ffffff;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.input-group input:focus,
+.quiz-answer-row input:focus {
+  border-color: var(--blue-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 14px;
+  background: var(--gradient-main);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  box-shadow: 0 6px 16px -4px rgba(236, 72, 153, 0.4);
+  transition:
+    transform 0.15s,
+    filter 0.2s;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Panel Hasil Langkah Demi Langkah */
+.result-panel {
+  margin-top: 14px;
+  background: var(--blue-soft);
+  border: 1px solid var(--blue-light);
+  border-radius: 14px;
+  padding: 12px 14px;
+  animation: slideFade 0.25s ease;
+}
+
+.result-panel h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 6px;
+}
+
+.steps-content p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.steps-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   KOTAK UJI PEMAHAMAN (MINI KUIS)
+   ========================================= */
+.quiz-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1.5px dashed var(--pink-light);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn-outline {
+  background: var(--pink-soft);
+  border: 1px solid var(--pink-primary);
+  color: var(--pink-primary);
+  padding: 5px 11px;
+  border-radius: 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--pink-primary);
+  color: #ffffff;
+}
+
+.quiz-text {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  padding: 11px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.quiz-answer-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-secondary {
+  background: var(--blue-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.btn-secondary:hover {
+  background: var(--blue-dark);
+}
+
+.btn-secondary:active {
+  transform: scale(0.96);
+}
+
+.feedback-msg {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.feedback-correct {
+  color: #16a34a;
+}
+
+.feedback-wrong {
+  color: #dc2626;
+}
+
+/* Responsif untuk layar ponsel kecil */
+@media (max-width: 380px) {
+  .app-container {
+    border-radius: 26px;
+  }
+  .btn-key {
+    height: 50px;
+    font-size: 1.08rem;
+  }
+  .current-operand {
+    font-size: 1.9rem;
+  }
+}

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator & Matematika SMK</title>
+    <!-- Menghubungkan Google Fonts: Plus Jakarta Sans untuk tampilan modern dan bersih -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Menghubungkan file CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-container">
+      <!-- Header Aplikasi -->
+      <header class="app-header">
+        <div class="brand">
+          <h1>MathCalc <span class="badge">SMK</span></h1>
+          <p>Kalkulator Pintar & Modul Belajar</p>
+        </div>
+
+        <!-- Navigasi Perpindahan Mode -->
+        <nav class="mode-switcher" role="tablist">
+          <button
+            id="tab-calc"
+            class="tab-btn active"
+            role="tab"
+            aria-selected="true"
+            data-target="calculator-view"
+          >
+            Kalkulator
+          </button>
+          <button
+            id="tab-learn"
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            data-target="learning-view"
+          >
+            Belajar SMK
+          </button>
+        </nav>
+      </header>
+
+      <!-- BAGIAN 1: KALKULATOR ALA PONSEL -->
+      <section id="calculator-view" class="view-section active" role="tabpanel">
+        <!-- Panel Riwayat Perhitungan Singkat -->
+        <div class="history-bar">
+          <span id="history-toggle" class="history-label">Riwayat (0)</span>
+          <button id="clear-history" class="btn-text" title="Hapus Riwayat">
+            Hapus
+          </button>
+        </div>
+        <div id="history-dropdown" class="history-list hidden">
+          <p class="empty-history">Belum ada riwayat perhitungan.</p>
+        </div>
+
+        <!-- Layar Tampilan Kalkulator -->
+        <div class="calc-display">
+          <div id="previous-operand" class="previous-operand"></div>
+          <div id="current-operand" class="current-operand">0</div>
+        </div>
+
+        <!-- Tombol Operasi Ilmiah Ringkas (Opsional seperti di HP saat digeser/mode lanjut) -->
+        <div class="scientific-row">
+          <button class="btn-sci" data-sci="sin">sin</button>
+          <button class="btn-sci" data-sci="cos">cos</button>
+          <button class="btn-sci" data-sci="tan">tan</button>
+          <button class="btn-sci" data-sci="sqrt">√</button>
+          <button class="btn-sci" data-sci="pow">x²</button>
+        </div>
+
+        <!-- Papan Tombol Utama (Keypad) -->
+        <div class="calc-keypad">
+          <button class="btn-key btn-action" data-action="clear">AC</button>
+          <button class="btn-key btn-action" data-action="delete">⌫</button>
+          <button class="btn-key btn-action" data-action="percent">%</button>
+          <button class="btn-key btn-operator" data-operator="÷">÷</button>
+
+          <button class="btn-key btn-number" data-number="7">7</button>
+          <button class="btn-key btn-number" data-number="8">8</button>
+          <button class="btn-key btn-number" data-number="9">9</button>
+          <button class="btn-key btn-operator" data-operator="×">×</button>
+
+          <button class="btn-key btn-number" data-number="4">4</button>
+          <button class="btn-key btn-number" data-number="5">5</button>
+          <button class="btn-key btn-number" data-number="6">6</button>
+          <button class="btn-key btn-operator" data-operator="-">−</button>
+
+          <button class="btn-key btn-number" data-number="1">1</button>
+          <button class="btn-key btn-number" data-number="2">2</button>
+          <button class="btn-key btn-number" data-number="3">3</button>
+          <button class="btn-key btn-operator" data-operator="+">+</button>
+
+          <button class="btn-key btn-number" data-action="toggle-sign">
+            ±
+          </button>
+          <button class="btn-key btn-number" data-number="0">0</button>
+          <button class="btn-key btn-number" data-number=".">.</button>
+          <button class="btn-key btn-equals" data-action="calculate">=</button>
+        </div>
+      </section>
+
+      <!-- BAGIAN 2: MODUL BELAJAR MATEMATIKA SMK -->
+      <section id="learning-view" class="view-section hidden" role="tabpanel">
+        <!-- Pemilih Topik Matematika SMK -->
+        <div class="topic-selector">
+          <label for="math-topic">Pilih Materi Matematika SMK:</label>
+          <select id="math-topic" class="form-select">
+            <option value="bunga-tunggal">
+              1. Matematika Keuangan: Bunga Tunggal
+            </option>
+            <option value="trigonometri">
+              2. Trigonometri Dasar (Sudut Istimewa)
+            </option>
+            <option value="persamaan-kuadrat">
+              3. Aljabar: Akar Persamaan Kuadrat
+            </option>
+            <option value="barisan-aritmatika">
+              4. Barisan & Deret Aritmatika
+            </option>
+          </select>
+        </div>
+
+        <!-- Kartu Rumus & Penjelasan Singkat -->
+        <div id="formula-card" class="formula-box">
+          <h2 id="topic-title">Bunga Tunggal</h2>
+          <p id="topic-desc" class="topic-desc">
+            Menghitung besar bunga berdasarkan modal awal, persentase suku
+            bunga, dan jangka waktu.
+          </p>
+          <div id="topic-formula" class="formula-highlight">B = M × i × t</div>
+        </div>
+
+        <!-- Area Simulasi / Kalkulator Materi Interaktif -->
+        <div class="interactive-solver">
+          <h3>Simulasi & Penyelesaian</h3>
+          <form id="solver-form" class="solver-inputs">
+            <!-- Input dinamis akan dirender oleh JavaScript sesuai materi yang dipilih -->
+            <div class="input-group">
+              <label for="input-1">Modal Awal (Rp)</label>
+              <input
+                type="number"
+                id="input-1"
+                placeholder="Contoh: 1000000"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="input-2">Suku Bunga per Tahun (%)</label>
+              <input
+                type="number"
+                id="input-2"
+                step="0.1"
+                placeholder="Contoh: 5"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="input-3">Jangka Waktu (Tahun)</label>
+              <input
+                type="number"
+                id="input-3"
+                step="0.5"
+                placeholder="Contoh: 2"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-primary">
+              Hitung & Lihat Langkah
+            </button>
+          </form>
+
+          <!-- Hasil & Langkah Pengerjaan -->
+          <div id="solver-result" class="result-panel hidden">
+            <h4>Hasil & Langkah Penyelesaian:</h4>
+            <div id="step-by-step" class="steps-content"></div>
+          </div>
+        </div>
+
+        <!-- Latihan Soal Cepat (Mini Kuis) -->
+        <div class="quiz-box">
+          <div class="quiz-header">
+            <h3>Uji Pemahaman</h3>
+            <button id="generate-quiz" class="btn-outline">Soal Baru</button>
+          </div>
+          <p id="quiz-question" class="quiz-text">
+            Modal sebesar Rp2.000.000 ditabung dengan bunga tunggal 6% per
+            tahun. Berapa bunga setelah 2 tahun?
+          </p>
+          <div class="quiz-answer-row">
+            <input
+              type="number"
+              id="quiz-user-answer"
+              placeholder="Masukkan jawaban angka..."
+            />
+            <button id="check-quiz" class="btn-secondary">Cek</button>
+          </div>
+          <p id="quiz-feedback" class="feedback-msg"></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Menghubungkan file JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
